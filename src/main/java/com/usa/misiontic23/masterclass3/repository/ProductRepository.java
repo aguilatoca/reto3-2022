@@ -15,18 +15,25 @@ public class ProductRepository {
     @Autowired
     private ProductCrudRepository productCrudRepository;
 
-    public List<Product> getALL(){
+    public List<Product> getALL()
+    {
         return (List<Product>) productCrudRepository.findAll();
     }
-    public Optional<Product> getProduct(int id){
+    public Optional<Product> getProduct(int id)
+    {
         return productCrudRepository.findById(id);
+
     }
-    public Product save(Product p){
+    public Product save(Product p)
+    {
         return productCrudRepository.save(p);
+
     }
 
-    public void delete(Product p){
+    public void delete(Product p)
+    {
         productCrudRepository.delete(p);
+        
     }
 }
 

@@ -1,27 +1,28 @@
 package com.usa.misiontic23.masterclass3.entities;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.apache.tomcat.jni.Library;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
-@Table(name = "category")
+@Table(name = "box")
 
-public class Category {
+public class Box implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private String description;
+    private String location;
+    //private Integer capacity;
+    private  String description;
+    //private String messages;
+    //private Integer reservations;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "category")
-   // @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("category")
-    private List<Box> boxes;
+    @ManyToOne
+    @JoinColumn(name = "categoryId")
+    @JsonIgnoreProperties("products")
+    private Category category;
 
     public Integer getId() {
         return id;
@@ -39,6 +40,14 @@ public class Category {
         this.name = name;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -47,11 +56,11 @@ public class Category {
         this.description = description;
     }
 
-    public List<Box> getBoxes() {
-        return boxes;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setBoxes(List<Box> boxes) {
-        this.boxes = boxes;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
