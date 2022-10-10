@@ -2,6 +2,7 @@ package com.usa.misiontic23.masterclass3.service;
 
 import com.usa.misiontic23.masterclass3.entities.Box;
 import com.usa.misiontic23.masterclass3.entities.Category;
+import com.usa.misiontic23.masterclass3.repository.BoxRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +34,7 @@ public class BoxService {
         }
     }
 
-    public Category update(Box p)
+    public Box update(Box p)
     {
         if (p.getId()!=null)
         {
