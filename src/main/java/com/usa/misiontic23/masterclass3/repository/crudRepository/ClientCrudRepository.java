@@ -1,7 +1,8 @@
 package com.usa.misiontic23.masterclass3.repository.crudRepository;
 
 import com.usa.misiontic23.masterclass3.entities.Category;
+import com.usa.misiontic23.masterclass3.entities.Client;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ClientCrudRepository extends CrudRepository<Category, Integer> {
+public interface ClientCrudRepository extends CrudRepository<Client, Integer> {
 }
