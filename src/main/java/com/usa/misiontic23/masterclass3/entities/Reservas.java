@@ -2,6 +2,7 @@ package com.usa.misiontic23.masterclass3.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -17,11 +18,6 @@ public class Reservas implements Serializable {
     private String client;
     private Date fechainicio;
     private Date fechafin;
-
-    @ManyToOne
-    @JoinColumn(name = "id")
-    @JsonIgnoreProperties("reservas")
-    private Category category;
 
     public Integer getId() {
         return id;
@@ -61,13 +57,5 @@ public class Reservas implements Serializable {
 
     public void setFechafin(Date fechafin) {
         this.fechafin = fechafin;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 }

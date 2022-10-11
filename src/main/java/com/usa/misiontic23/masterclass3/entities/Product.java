@@ -15,10 +15,7 @@ public class Product implements Serializable {
     private String name;
     private Integer year;
 
-    @ManyToOne
-    @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("products")
-    private Category category;
+
 
     public Integer getId() {
         return id;
@@ -44,11 +41,7 @@ public class Product implements Serializable {
         this.year = year;
     }
 
-    public Category getCategory() {
-        return category;
-    }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
+
+
 }

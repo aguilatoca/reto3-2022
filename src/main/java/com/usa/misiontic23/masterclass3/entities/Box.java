@@ -21,7 +21,7 @@ public class Box implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("products")
+    @JsonIgnoreProperties("boxes")
     private Category category;
 
     public Integer getId() {

@@ -5,6 +5,7 @@ import com.usa.misiontic23.masterclass3.entities.Box;
 import com.usa.misiontic23.masterclass3.entities.Product;
 import com.usa.misiontic23.masterclass3.service.BoxService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class BoxController {
         return boxService.getALL();
     }
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public Box save(@RequestBody Box p){
         return boxService.save(p);
     }

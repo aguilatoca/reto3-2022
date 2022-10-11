@@ -49,10 +49,7 @@ public class ProductService {
                 {
                     q.get().setYear(p.getYear());
                 }
-                if (p.getCategory() != null)
-                {
-                    q.get().setCategory(p.getCategory());
-                }
+
                 productRepository.save(q.get());
                 return q.get();
 
