@@ -14,8 +14,9 @@ public class Client implements Serializable {
     private Integer idClient;
     private String name;
     private Integer age;
-    private String password;
     private String email;
+    private String password;
+
 
 
     public Integer getIdClient() {

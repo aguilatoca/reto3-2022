@@ -1,7 +1,6 @@
 package com.usa.misiontic23.masterclass3.service;
 
 import com.usa.misiontic23.masterclass3.entities.Category;
-import com.usa.misiontic23.masterclass3.entities.Product;
 import com.usa.misiontic23.masterclass3.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +17,7 @@ public class CategoryService {
     public List<Category> getALL(){
         return categoryRepository.getALL();
     }
-    public Optional<Category> getProduct(int id){
+    public Optional<Category> getCategory(int id){
         return categoryRepository.getCategory(id);
     }
     public Category save(Category p){
@@ -67,4 +66,5 @@ public class CategoryService {
         }
         return flag;
     }
+
 }

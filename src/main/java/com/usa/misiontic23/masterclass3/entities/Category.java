@@ -23,8 +23,6 @@ public class Category {
     @JsonIgnoreProperties("category")
     private List<Box> boxes;
 
-
-
     public Integer getId() {
         return id;
     }

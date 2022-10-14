@@ -2,7 +2,6 @@ package com.usa.misiontic23.masterclass3.repository;
 
 
 import com.usa.misiontic23.masterclass3.entities.Client;
-import com.usa.misiontic23.masterclass3.entities.Product;
 import com.usa.misiontic23.masterclass3.repository.crudRepository.ClientCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
