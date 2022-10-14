@@ -15,7 +15,7 @@ public class MessageService {
     @Autowired
     private MessageRepository messageRepository;
 
-    public static List<Message> getALL(){
+    public List<Message> getALL(){
         return messageRepository.getALL();
     }
     public Optional<Message> getMessage(int idMessage){

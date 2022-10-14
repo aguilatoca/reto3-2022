@@ -13,6 +13,7 @@ import java.util.Optional;
 
 public class ReservationRepository {
 
+    public static List<Reservation> getAll;
     @Autowired
     private ReservationCrudRepository reservationCrudRepository;
     public List<Reservation> getALL(){
