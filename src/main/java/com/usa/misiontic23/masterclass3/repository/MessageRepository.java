@@ -20,7 +20,7 @@ public class MessageRepository {
     {
         return (List<Message>) messageCuedRepository.findAll();
     }
-    public Optional<Message> getMessage(int id)
+    public Optional<Message> getById(int id)
     {
         return messageCuedRepository.findById(id);
 

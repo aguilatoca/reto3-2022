@@ -1,6 +1,6 @@
 package com.usa.misiontic23.masterclass3.service;
 
-import com.usa.misiontic23.masterclass3.entities.Category;
+
 import com.usa.misiontic23.masterclass3.entities.Message;
 import com.usa.misiontic23.masterclass3.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +18,14 @@ public class MessageService {
     public List<Message> getALL(){
         return messageRepository.getALL();
     }
-    public Optional<Message> getMessage(int idMessage){
-        return messageRepository.getMessage(idMessage);
+    public Optional<Message> getMessage(int id){
+        return messageRepository.getById(id);
     }
     public Message save(Message p){
-        if(p.getIdMessage()==null){
+        if(p.getMessageText() == null){
             return messageRepository.save(p);
         }else{
-            Optional<Message> e = messageRepository.getMessage(p.getIdMessage());
+            Optional<Message> e = messageRepository.getById(p.getIdMessage());
             if (e.isPresent()){
                 return p;
             }else{
@@ -36,14 +36,14 @@ public class MessageService {
 
     public Message update(Message p)
     {
-        if (p.getIdMessage()!=null)
+        if (p.getMessageText()!=null)
         {
-            Optional<Message> q = messageRepository.getMessage(p.getIdMessage());
+            Optional<Message> q = messageRepository.getById(p.getIdMessage());
             if(q.isPresent())
             {
-                if (p.getMessage() != null)
+                if (p.getMessageText() != null)
                 {
-                    q.get().setMessage(p.getMessage());
+                    q.get().setIdMessage(p.getIdMessage());
                 }
 
                 messageRepository.save(q.get());
@@ -60,7 +60,7 @@ public class MessageService {
 
     public boolean delete(int id){
         boolean flag=false;
-        Optional<Message>p= messageRepository.getMessage(id);
+        Optional<Message>p= messageRepository.getById(id);
         if(p.isPresent()){
             messageRepository.delete(p.get());
             flag=true;

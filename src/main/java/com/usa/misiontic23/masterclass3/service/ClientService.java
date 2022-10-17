@@ -18,14 +18,14 @@ public class ClientService {
         return clientRepository.getALL();
     }
     public Optional<Client> getClient(int id){
-        return clientRepository.getClient(id);
+        return clientRepository.getById(id);
     }
     public Client save(Client p){
         if(p.getIdClient()==null){
             return clientRepository.save(p);
         }else{
 
-            Optional<Client> e = clientRepository.getClient(p.getIdClient());
+            Optional<Client> e = clientRepository.getById(p.getIdClient());
             if (e.isPresent()){
                 return p;
             }else{
@@ -38,7 +38,7 @@ public class ClientService {
     {
         if (p.getIdClient()!=null)
         {
-            Optional<Client> q = clientRepository.getClient(p.getIdClient());
+            Optional<Client> q = clientRepository.getById(p.getIdClient());
             if(q.isPresent())
             {
                 if (p.getName() != null)
@@ -60,7 +60,7 @@ public class ClientService {
 
     public boolean delete(int id){
         boolean flag=false;
-        Optional<Client>p= clientRepository.getClient(id);
+        Optional<Client>p= clientRepository.getById(id);
         if(p.isPresent()){
             clientRepository.delete(p.get());
             flag=true;

@@ -9,7 +9,7 @@ import java.util.Date;
 @Entity
 @Table(name = "reservation")
 
-public class Reservation implements Serializable {
+public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
@@ -23,9 +23,11 @@ public class Reservation implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "clientId")
-    @JsonIgnoreProperties({"reservations" , "messages"})
+    @JsonIgnoreProperties({"reservations" , "message"})
     private Client client;
-    private String score;
+    @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "reservation")
+    @JsonIgnoreProperties({"reservations"})
+    private Score score;
 
     public Integer getIdReservation() {
         return idReservation;
@@ -75,11 +77,11 @@ public class Reservation implements Serializable {
         this.client = client;
     }
 
-    public String getScore() {
+    public Score getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(Score score) {
         this.score = score;
     }
 }

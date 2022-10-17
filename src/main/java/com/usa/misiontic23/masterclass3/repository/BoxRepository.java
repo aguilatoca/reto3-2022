@@ -19,7 +19,7 @@ public class BoxRepository {
         return (List<Box>) boxCrudRepository.findAll();
 
     }
-    public Optional<Box> getBox(int id){
+    public Optional<Box> getById(int id){
         return boxCrudRepository.findById(id);
     }
     public Box save(Box c){

@@ -3,28 +3,24 @@ package com.usa.misiontic23.masterclass3.controller;
 
 import com.usa.misiontic23.masterclass3.entities.Reservation;
 import com.usa.misiontic23.masterclass3.service.ReservationService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api/Reservation")
-
 public class ReservationController {
-    @Autowired
-    private ReservationService reservationService;
+    private final ReservationService reservationService;
 
-    @GetMapping("/all")
-    public List<Reservation> getAll(){
-        return ReservationService.getALL();
+    public ReservationController(ReservationService reservationService) {
+        this.reservationService = reservationService;
     }
 
-    @GetMapping("/{id}")
-    public Optional<Reservation> getReservation(@PathVariable("id") int id){
-        return reservationService.getReservation(id);
+    @GetMapping("/all")
+    public List<Reservation> getALL(){
+        return reservationService.getAll();
     }
 
     @PostMapping("/save")
@@ -32,4 +28,5 @@ public class ReservationController {
     public Reservation save (@RequestBody Reservation p){
         return reservationService.save(p);
     }
+
 }

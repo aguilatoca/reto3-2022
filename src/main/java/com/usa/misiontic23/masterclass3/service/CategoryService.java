@@ -18,13 +18,13 @@ public class CategoryService {
         return categoryRepository.getALL();
     }
     public Optional<Category> getCategory(int id){
-        return categoryRepository.getCategory(id);
+        return categoryRepository.getById(id);
     }
     public Category save(Category p){
         if(p.getId()==null){
             return categoryRepository.save(p);
         }else{
-            Optional<Category> e = categoryRepository.getCategory(p.getId());
+            Optional<Category> e = categoryRepository.getById(p.getId());
             if (e.isPresent()){
                 return p;
             }else{
@@ -37,7 +37,7 @@ public class CategoryService {
     {
         if (p.getId()!=null)
         {
-            Optional<Category> q = categoryRepository.getCategory(p.getId());
+            Optional<Category> q = categoryRepository.getById(p.getId());
             if(q.isPresent())
             {
                 if (p.getName() != null)
@@ -59,7 +59,7 @@ public class CategoryService {
 
     public boolean delete(int id){
         boolean flag=false;
-        Optional<Category>p= categoryRepository.getCategory(id);
+        Optional<Category>p= categoryRepository.getById(id);
         if(p.isPresent()){
             categoryRepository.delete(p.get());
             flag=true;

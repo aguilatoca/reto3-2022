@@ -1,7 +1,6 @@
 package com.usa.misiontic23.masterclass3.service;
 
 import com.usa.misiontic23.masterclass3.entities.Box;
-import com.usa.misiontic23.masterclass3.entities.Category;
 import com.usa.misiontic23.masterclass3.repository.BoxRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,13 +18,13 @@ public class BoxService {
         return boxRepository.getALL();
     }
     public Optional<Box> getBox(int id){
-        return boxRepository.getBox(id);
+        return boxRepository.getById(id);
     }
     public Box save(Box p){
         if(p.getId()==null){
             return boxRepository.save(p);
         }else{
-            Optional<Box> e = boxRepository.getBox(p.getId());
+            Optional<Box> e = boxRepository.getById(p.getId());
             if (e.isPresent()){
                 return p;
             }else{
@@ -38,7 +37,7 @@ public class BoxService {
     {
         if (p.getId()!=null)
         {
-            Optional<Box> q = boxRepository.getBox(p.getId());
+            Optional<Box> q = boxRepository.getById(p.getId());
             if(q.isPresent())
             {
                 if (p.getName() != null)
@@ -71,7 +70,7 @@ public class BoxService {
 
     public boolean delete(int id){
         boolean flag=false;
-        Optional<Box>p= boxRepository.getBox(id);
+        Optional<Box>p= boxRepository.getById(id);
         if(p.isPresent()){
             boxRepository.delete(p.get());
             flag=true;
