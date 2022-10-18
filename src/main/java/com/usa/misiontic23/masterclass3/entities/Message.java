@@ -14,15 +14,15 @@ public class Message {
     private String messageText;
     @ManyToOne
     @JoinColumn(name = "boxId")
-    @JsonIgnoreProperties({"messages","reservations"})
+    @JsonIgnoreProperties({"messages", "reservations"})
     private Box box;
 
     @ManyToOne
     @JoinColumn(name = "clientId")
-    @JsonIgnoreProperties({"messages","reservations"})
+    @JsonIgnoreProperties({"messages", "reservations"})
     private Client client;
 
-    public int getIdMessage() {
+    public Integer getIdMessage() {
         return idMessage;
     }
 

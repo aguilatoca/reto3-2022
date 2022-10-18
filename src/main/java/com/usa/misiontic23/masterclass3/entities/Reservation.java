@@ -23,9 +23,9 @@ public class Reservation {
 
     @ManyToOne
     @JoinColumn(name = "clientId")
-    @JsonIgnoreProperties({"reservations" , "message"})
+    @JsonIgnoreProperties({"reservations" , "messages"})
     private Client client;
-    @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "reservation")
+    @OneToOne
     @JsonIgnoreProperties({"reservations"})
     private Score score;
 

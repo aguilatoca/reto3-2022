@@ -13,6 +13,7 @@ public class Score {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idScore;
+    private String messageText;
     private Integer score;
 
     @OneToOne
@@ -25,6 +26,14 @@ public class Score {
 
     public void setIdScore(Integer idScore) {
         this.idScore = idScore;
+    }
+
+    public String getMessageText() {
+        return messageText;
+    }
+
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
     }
 
     public Integer getScore() {

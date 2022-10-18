@@ -1,6 +1,6 @@
 package com.usa.misiontic23.masterclass3.repository;
 
-import com.usa.misiontic23.masterclass3.entities.Reservation;
+
 import com.usa.misiontic23.masterclass3.entities.Score;
 import com.usa.misiontic23.masterclass3.repository.crudRepository.ScoreCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class ScoreRepository {
     public List<Score> getALL(){
         return (List<Score>) scoreCrudRepository.findAll();
     }
-    public Optional<Score> getById(int id){
+    public Optional<Score> getScore(int id){
         return scoreCrudRepository.findById(id);
     }
     public Score save(Score c){

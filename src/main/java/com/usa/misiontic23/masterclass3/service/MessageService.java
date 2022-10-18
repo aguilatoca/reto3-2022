@@ -19,17 +19,17 @@ public class MessageService {
         return messageRepository.getALL();
     }
     public Optional<Message> getMessage(int id){
-        return messageRepository.getById(id);
+        return messageRepository.getMessage(id);
     }
     public Message save(Message p){
         if(p.getMessageText() == null){
             return messageRepository.save(p);
         }else{
-            Optional<Message> e = messageRepository.getById(p.getIdMessage());
-            if (e.isPresent()){
-                return p;
-            }else{
+            Optional<Message> e = getMessage(p.getIdMessage());
+            if (e.isEmpty()){
                 return messageRepository.save(p);
+            }else{
+                return p;
             }
         }
     }
@@ -38,33 +38,28 @@ public class MessageService {
     {
         if (p.getMessageText()!=null)
         {
-            Optional<Message> q = messageRepository.getById(p.getIdMessage());
+            Optional<Message> q = getMessage(p.getIdMessage());
             if(q.isPresent())
             {
                 if (p.getMessageText() != null)
                 {
-                    q.get().setIdMessage(p.getIdMessage());
+                    q.get().setMessageText(p.getMessageText());
                 }
 
-                messageRepository.save(q.get());
-                return q.get();
+                return messageRepository.save(q.get());
 
-            } else
-            {
-                return p;
-            }
-        }else {
-            return p;
+             }
+
         }
+            return p;
+
     }
 
     public boolean delete(int id){
-        boolean flag=false;
-        Optional<Message>p= messageRepository.getById(id);
-        if(p.isPresent()){
-            messageRepository.delete(p.get());
-            flag=true;
-        }
-        return flag;
+        boolean respuesta = getMessage(id).map(elemento ->{
+           messageRepository.delete(elemento);
+            return true;
+        }).orElse(false);
+        return respuesta;
     }
 }

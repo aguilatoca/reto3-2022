@@ -19,19 +19,42 @@ public class ScoreService {
         return scoreRepository.getALL();
     }
     public Optional<Score> getScore(int id){
-        return scoreRepository.getById(id);
+        return scoreRepository.getScore(id);
     }
     public Score save(Score score){
         if(score.getIdScore()==null){
             return scoreRepository.save(score);
         }else{
-            Optional<Score> e = scoreRepository.getById(score.getIdScore());
+            Optional<Score> e = scoreRepository.getScore(score.getIdScore());
             if (e.isEmpty()){
                 return scoreRepository.save(score);
             }else{
                 return score;
             }
         }
+    }
+
+    public Score update (Score score){
+        if(score.getIdScore()!=null){
+            Optional<Score> e = getScore(score.getIdScore());
+            if(!e.isEmpty()){
+                if(score.getMessageText()!=null){
+                    e.get().setMessageText(score.getMessageText());
+                }
+                if(score.getScore()!=null){
+                    e.get().setScore(score.getScore());
+                }
+                return scoreRepository.save(e.get());
+            }
+        }
+        return score;
+    }
+    public boolean delete(int id){
+        Boolean respuesta = getScore(id).map(elemento ->{
+            scoreRepository.delete(elemento);
+            return true;
+        }).orElse(false);
+        return respuesta;
     }
 
 }
