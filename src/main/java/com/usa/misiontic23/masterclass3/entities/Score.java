@@ -19,6 +19,10 @@ public class Score {
     @OneToOne
     @JsonIgnoreProperties("score")
     private Reservation reservation;
+// quitar si no funciona
+    public static String setMessageText() {
+        return setMessageText();
+    }
 
     public Integer getIdScore() {
         return idScore;

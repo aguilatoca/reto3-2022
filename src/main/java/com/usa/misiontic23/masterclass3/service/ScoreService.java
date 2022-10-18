@@ -38,8 +38,8 @@ public class ScoreService {
         if(score.getIdScore()!=null){
             Optional<Score> e = getScore(score.getIdScore());
             if(!e.isEmpty()){
-                if(score.getMessageText()!=null){
-                    e.get().setMessageText(score.getMessageText());
+                if(Score.setMessageText()!=null){
+                    e.get().setMessageText(score.setMessageText());
                 }
                 if(score.getScore()!=null){
                     e.get().setScore(score.getScore());
@@ -49,6 +49,7 @@ public class ScoreService {
         }
         return score;
     }
+
     public boolean delete(int id){
         Boolean respuesta = getScore(id).map(elemento ->{
             scoreRepository.delete(elemento);
